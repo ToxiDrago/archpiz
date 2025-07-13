@@ -11,6 +11,7 @@
     "axios": "^1.10.0",
     "eslint-plugin-react-hooks": "^6.1.0-canary-d92056ef-20250627",
     "lodash.debounce": "^4.0.8",
+    "qs": "^6.14.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-paginate": "^8.3.0",

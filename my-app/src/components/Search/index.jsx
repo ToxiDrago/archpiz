@@ -10,14 +10,16 @@ const Search = () => {
 
   const onClickClear = () => {
     setSearchValue('');
+    setValue('');
     inputRef.current.focus();
   };
 
-  const updateSearchValue = React.useCallback(
-    debounce((str) => {
-      setSearchValue(str);
-    }, 1000),
-    [],
+  const updateSearchValue = React.useMemo(
+    () =>
+      debounce((str) => {
+        setSearchValue(str);
+      }, 1000),
+    [setSearchValue],
   );
 
   const onChangeInput = (event) => {
