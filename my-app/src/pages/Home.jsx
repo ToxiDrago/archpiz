@@ -2,7 +2,7 @@ import React from 'react';
 import qs from 'qs';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 
 import { selectFilter, setCategoryId, setCurrentPage } from '../redux/slices/filterSlice';
 
@@ -90,9 +90,11 @@ const Home = () => {
     isMounted.current = true;
   }, [sort.sortProperty, categoryId, currentPage, navigate]);
 
-  const pizzas = items
-    .filter((obj) => obj.title.toLowerCase().includes(searchValue.toLowerCase()))
-    .map((obj) => <PizzaBlock key={obj.id} {...obj} />);
+  const pizzas = items.map((obj) => (
+    <NavLink key={obj.id} to={`/pizza/${obj.id}`}>
+      <PizzaBlock {...obj} />
+    </NavLink>
+  ));
   const skeletons = [...new Array(6)].map((_, index) => <Placeholder key={index} />);
 
   return (
