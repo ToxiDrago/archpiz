@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { NavLink } from 'react-router';
 import CartItem from '../components/CartItem.tsx';
-import { clearItems, selectCart } from '../redux/slices/cartSlice';
+import { clearItems, selectCart } from '../redux/slices/cartSlice.ts';
 import CartEmpty from '../components/CartEmpty.tsx';
 
 const Cart = () => {

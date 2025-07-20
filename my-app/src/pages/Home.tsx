@@ -5,14 +5,14 @@ import {ThunkDispatch} from "@reduxjs/toolkit";
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router';
 
-import { selectFilter, setCategoryId, setCurrentPage } from '../redux/slices/filterSlice';
+import { selectFilter, setCategoryId, setCurrentPage } from '../redux/slices/filterSlice.ts';
 
 import Categories from '../components/Categories.tsx';
 import Sort from '../components/Sort.tsx';
 import PizzaBlock from '../components/PizzaBlock/index.tsx';
 import Placeholder from '../components/PizzaBlock/Placeholder.tsx';
 import Pagination from '../components/Pagination/index.tsx';
-import { fetchPizzas, selectPizzaData } from '../redux/slices/pizzaSlice';
+import { fetchPizzas, selectPizzaData } from '../redux/slices/pizzaSlice.ts';
 
 const Home = () => {
   const navigate = useNavigate();
