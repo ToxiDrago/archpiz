@@ -2,9 +2,9 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { NavLink } from 'react-router';
-import CartItem from '../components/CartItem';
+import CartItem from '../components/CartItem.tsx';
 import { clearItems, selectCart } from '../redux/slices/cartSlice';
-import CartEmpty from '../components/CartEmpty';
+import CartEmpty from '../components/CartEmpty.tsx';
 
 const Cart = () => {
   const dispatch = useDispatch();

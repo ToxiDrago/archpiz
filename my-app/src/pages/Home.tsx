@@ -1,21 +1,22 @@
 import React from 'react';
 import qs from 'qs';
 
+import {ThunkDispatch} from "@reduxjs/toolkit";
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router';
 
 import { selectFilter, setCategoryId, setCurrentPage } from '../redux/slices/filterSlice';
 
-import Categories from '../components/Categories';
-import Sort from '../components/Sort';
-import PizzaBlock from '../components/PizzaBlock';
-import Placeholder from '../components/PizzaBlock/Placeholder';
-import Pagination from '../components/Pagination';
+import Categories from '../components/Categories.tsx';
+import Sort from '../components/Sort.tsx';
+import PizzaBlock from '../components/PizzaBlock/index.tsx';
+import Placeholder from '../components/PizzaBlock/Placeholder.tsx';
+import Pagination from '../components/Pagination/index.tsx';
 import { fetchPizzas, selectPizzaData } from '../redux/slices/pizzaSlice';
 
 const Home = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
   const isMounted = React.useRef(false);
 
   const { items, status } = useSelector(selectPizzaData);
@@ -49,7 +50,6 @@ const Home = () => {
       const search = searchValue ? `search=${searchValue}` : '';
 
       if (searchValue) {
-        // Загрузи все пиццы (без пагинации)
         dispatch(
           fetchPizzas({
             sortBy,

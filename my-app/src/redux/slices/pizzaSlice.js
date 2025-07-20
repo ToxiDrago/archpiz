@@ -1,6 +1,19 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+/**
+ * @typedef {Object} FetchPizzasParams
+ * @property {string} sortBy
+ * @property {string} order
+ * @property {string} category
+ * @property {string} [search]
+ * @property {number} currentPage
+ * @property {boolean} [noLimit]
+ */
+
+/**
+ * @type {import('@reduxjs/toolkit').AsyncThunk<any, FetchPizzasParams>
+ */
 export const fetchPizzas = createAsyncThunk('pizza/fetchPizzasStatus', async (params, thunkAPI) => {
   const { sortBy, order, category, search, currentPage } = params;
   const { data } = await axios.get(

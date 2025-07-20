@@ -4,11 +4,11 @@ import { Routes, Route } from 'react-router';
 
 import './scss/app.scss';
 
-import Home from './pages/Home';
-import NotFound from './pages/NotFound';
-import FullPizza from './pages/FullPizza';
-import Cart from './pages/Cart';
-import MainLayout from './layouts/MainLayout';
+import Home from './pages/Home.tsx';
+import NotFound from './pages/NotFound.tsx';
+import FullPizza from './pages/FullPizza.tsx';
+import Cart from './pages/Cart.tsx';
+import MainLayout from './layouts/MainLayout.tsx';
 
 function App() {
   return (
