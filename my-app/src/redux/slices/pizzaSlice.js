@@ -15,10 +15,13 @@ import axios from 'axios';
  * @type {import('@reduxjs/toolkit').AsyncThunk<any, FetchPizzasParams>
  */
 export const fetchPizzas = createAsyncThunk('pizza/fetchPizzasStatus', async (params, thunkAPI) => {
-  const { sortBy, order, category, search, currentPage } = params;
-  const { data } = await axios.get(
-    `https://680d6458c47cb8074d904fd5.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`,
-  );
+  const { sortBy, order, category, search, currentPage, noLimit } = params;
+  let url = `https://680d6458c47cb8074d904fd5.mockapi.io/items?`;
+  if (!noLimit) {
+    url += `page=${currentPage}&limit=4&`;
+  }
+  url += `${category}&sortBy=${sortBy}&order=${order}${search}`;
+  const { data } = await axios.get(url);
 
   if (data.length === 0) {
     return thunkAPI.rejectWithValue('Пиццы пустые');

@@ -47,25 +47,24 @@ const Home = () => {
       const sortBy = sort.sortProperty.replace('-', '');
       const order = sort.sortProperty.includes('-') ? 'asc' : 'desc';
       const category = categoryId > 0 ? `category=${categoryId}` : '';
-      const search = searchValue ? `search=${searchValue}` : '';
-
       if (searchValue) {
         dispatch(
           fetchPizzas({
             sortBy,
             order,
-            category,
+            category: '',
+            search: '',
             currentPage: 1,
             noLimit: true,
           }),
         );
       } else {
-        // Обычная пагинация
         dispatch(
           fetchPizzas({
             sortBy,
             order,
             category,
+            search: '',
             currentPage,
           }),
         );
@@ -90,7 +89,13 @@ const Home = () => {
     isMounted.current = true;
   }, [sort.sortProperty, categoryId, currentPage, navigate]);
 
-  const pizzas = items.map((obj) => (
+  const filteredItems = searchValue
+    ? items.filter((pizza) =>
+        pizza.title.toLowerCase().includes(searchValue.toLowerCase())
+      )
+    : items;
+
+  const pizzas = filteredItems.map((obj) => (
     <NavLink key={obj.id} to={`/pizza/${obj.id}`}>
       <PizzaBlock {...obj} />
     </NavLink>
