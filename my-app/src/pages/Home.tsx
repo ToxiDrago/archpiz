@@ -3,7 +3,7 @@ import qs from 'qs';
 
 import {ThunkDispatch} from "@reduxjs/toolkit";
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 
 import { selectFilter, setCategoryId, setCurrentPage } from '../redux/slices/filterSlice.ts';
 
@@ -22,9 +22,9 @@ const Home = () => {
   const { items, status } = useSelector(selectPizzaData);
   const { categoryId, sort, currentPage, searchValue } = useSelector(selectFilter);
 
-  const onChangeCategory = (id) => {
+  const onChangeCategory = React.useCallback((id: number) => {
     dispatch(setCategoryId(id));
-  };
+  }, []);
 
   const onChangePage = (page) => {
     dispatch(setCurrentPage(page));
@@ -96,9 +96,7 @@ const Home = () => {
     : items;
 
   const pizzas = filteredItems.map((obj) => (
-    <NavLink key={obj.id} to={`/pizza/${obj.id}`}>
-      <PizzaBlock {...obj} />
-    </NavLink>
+    <PizzaBlock key={obj.id} {...obj} />
   ));
   const skeletons = [...new Array(6)].map((_, index) => <Placeholder key={index} />);
 

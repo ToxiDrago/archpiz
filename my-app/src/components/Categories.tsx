@@ -1,11 +1,14 @@
 import React from 'react';
+import { useWhyDidYouUpdate } from 'ahooks';
 
 interface CategoriesProps {
   value: number;
   onChangeCategory: (idx: number) => void;
 }
 
-const Categories: React.FC<CategoriesProps> = ({ value, onChangeCategory }) => {
+const Categories: React.FC<CategoriesProps> = React.memo(({ value, onChangeCategory }) => {
+  useWhyDidYouUpdate('Categories', {value, onChangeCategory});
+
   const categories = ['Все', 'Мясные', 'Вегетарианская', 'Гриль', 'Острые', 'Закрытые'];
 
   return (
@@ -19,6 +22,6 @@ const Categories: React.FC<CategoriesProps> = ({ value, onChangeCategory }) => {
       </ul>
     </div>
   );
-};
+});
 
 export default Categories;
