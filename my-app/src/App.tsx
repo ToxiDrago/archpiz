@@ -1,4 +1,3 @@
-import Loadable from 'react-loadable';
 import React from 'react';
 import { Routes, Route } from 'react-router';
 
