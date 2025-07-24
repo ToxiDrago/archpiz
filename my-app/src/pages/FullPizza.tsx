@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router';
+import { NavLink } from 'react-router';
 
 const FullPizza = () => {
   const [pizza, setPizza] = React.useState();
@@ -30,6 +31,11 @@ const FullPizza = () => {
       <img src={pizza['imageUrl']} alt="Pizza" />
       <h2>{pizza['title']}</h2>
       <h4>{pizza['price']} рублей</h4>
+      <NavLink to="/">
+      <button className="button button--outline button--add">
+        <span>Назад</span>
+      </button>
+      </NavLink>
     </div>
   );
 };

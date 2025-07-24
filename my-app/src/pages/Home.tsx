@@ -7,11 +7,7 @@ import { useNavigate } from 'react-router';
 
 import { selectFilter, setCategoryId, setCurrentPage } from '../redux/slices/filterSlice.ts';
 
-import Categories from '../components/Categories.tsx';
-import Sort from '../components/Sort.tsx';
-import PizzaBlock from '../components/PizzaBlock/index.tsx';
-import Placeholder from '../components/PizzaBlock/Placeholder.tsx';
-import Pagination from '../components/Pagination/index.tsx';
+import { Categories, Sort, Pagination, Placeholder, PizzaBlock } from '../components/index.ts';
 import { fetchPizzas, selectPizzaData } from '../redux/slices/pizzaSlice.ts';
 
 const Home = () => {
