@@ -20,7 +20,7 @@ const Home = () => {
 
   const onChangeCategory = React.useCallback((id: number) => {
     dispatch(setCategoryId(id));
-  }, []);
+  }, [dispatch]);
 
   const onChangePage = (page) => {
     dispatch(setCurrentPage(page));
